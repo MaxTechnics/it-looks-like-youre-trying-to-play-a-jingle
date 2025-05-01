@@ -1,0 +1,17 @@
+/* @import "tailwindcss"; */
+@import "98.css";
+
+html {
+  background-color: #c0c0c0;
+  height: 100%;
+}
+
+body, .app-mount {
+  height: 100%;
+  margin: 0;
+  box-sizing: border-box;
+  font-family: 'Pixelated MS Sans Serif';
+
+}
+
+
