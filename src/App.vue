@@ -22,6 +22,7 @@
             <div class="window-body windowcontent">
                 <h1><i>The jukebox</i></h1>
                 <p>This shit is like so ass<br />Elk zunnen dah<br />ik ben herrit callewaert uit bavikhove deelhemeente van oarelbeke.</p>
+                <video :src="funkytown" autoplay loop muted style="position: absolute; top: 30px; right: calc(5px + 32px); height: 75px;"></video>
                 <div>
                     <menu role="tablist">
                         <li @click="activeTab = 'actions'" role="tab" :aria-selected="activeTab === 'actions'"><a>Actions</a></li>
@@ -155,6 +156,7 @@ import Error from './Views/Error.vue';
 import StartBtn from './components/StartBtn.vue'
 import clippymap from './clippy/agents/Clippy/map.png';
 import { createClient } from '@supabase/supabase-js';
+import funkytown from './images/funkytown.mp4'
 
 const hasLoaded = ref(false);
 const activeTab = ref<'actions' | 'oldjingles' | 'debug' | 'clippy'>('debug');
