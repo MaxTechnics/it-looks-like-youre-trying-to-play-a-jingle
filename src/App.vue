@@ -134,7 +134,7 @@
             <div class="status-bar status" style="align-self: flex-end;">
                 <p class="status-bar-field">System ready</p>
                 <p class="status-bar-field">Websocket delay: N/A</p>
-                <p class="status-bar-field">Last message: N/A</p>
+                <p class="status-bar-field">Last message: {{ latest_msg }}</p>
                 <p class="status-bar-field">{{ time }}</p>
             </div>
         </div>
@@ -142,7 +142,7 @@
 </template>
 
 <script setup lang="ts">
-import { actions } from './audioutils/actions';
+import { actions, run_action_by_id } from './audioutils/actions';
 import { Howl } from 'howler';
 import { onMounted, reactive, ref, onErrorCaptured } from 'vue';
 import { _loadEverything, tests, playEffect, playIdent, playTapijtje, getInstance, loadJingles, stopIdent, stopEffect, stopTapijtje, fadeOutEffect, fadeOutJingle, fadeOutTapijtje } from './player';
@@ -152,9 +152,54 @@ import LoadingView from './Views/LoadingView.vue';
 import Error from './Views/Error.vue';
 import StartBtn from './components/StartBtn.vue'
 import clippymap from './clippy/agents/Clippy/map.png';
+import { createClient } from '@supabase/supabase-js';
 
 const hasLoaded = ref(false);
 const activeTab = ref<'actions' | 'oldjingles' | 'debug' | 'clippy'>('debug');
+
+const env = import.meta.env
+const supabase = createClient(env.VITE_APP_SUPABASE_URL, env.VITE_APP_SUPABASE_KEY)
+const latest_msg = ref('N/A')
+
+const jingleChannel = supabase.channel('backstage', {
+    config: {
+        broadcast: { ack: true }
+    }
+})
+
+// jingleChannel.subscribe(async (status) => {
+//     if (status !== 'SUBSCRIBED') { return }
+
+//     const serverResponse = await jingleChannel.send({
+//         type: 'broadcast',
+//         event: 'acknowledge',
+//         payload: {},
+//     })
+
+//     console.log('serverResponse', serverResponse)
+// })
+
+
+// Subscribe to the Channel
+jingleChannel.on('broadcast',
+    {
+        event: 'jingle_action'
+    }, // Listen for "shout". Can be "*" to listen to all events
+    async ({ payload }) => {
+        console.log('Got message', payload)
+        const serverResponse = await jingleChannel.send({
+            type: 'broadcast',
+            event: 'acknowledge',
+            payload: {},
+        })
+
+        console.log('serverResponse', serverResponse)
+        latest_msg.value = `p:${payload.action_id}`
+        // actions[payload.group][payload.action_id].exec()
+        run_action_by_id(payload.action_id)
+    }
+)
+    .subscribe()
 
 const dbg_fields = reactive({
     playJingleId: '',
