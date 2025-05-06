@@ -209,7 +209,7 @@ const dafjingles: Jingle[] = [
         program: 'De_afspraak_2024',
         type: JingleType.Tapijtje,
         file: DF_2024_BEDANKING,
-        loops: false
+        loops: true
     },
     {
         name: 'Beginbumper',

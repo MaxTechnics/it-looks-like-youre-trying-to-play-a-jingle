@@ -42,12 +42,13 @@ export const loadJingles = async () => {
     const allJingles: Jingle[] = Object.values(jinglesByProgram).flat();
 
     allJingles.forEach(jingle => {
-        const { id, type, file, program } = jingle;
+        const { id, type, file, program, loops } = jingle;
 
         const howlInstance = new Howl({
             src: [file],
             preload: false,
-            loop: false,  // TODO: This needs to be updated later as we do in fact define this
+            // loop: false,  // TODO: This needs to be updated later as we do in fact define this
+            loop: loops  // TODO: This needs to be updated later as we do in fact define this
             //   volume: 1,  // Volumes of jingles need to be looked into in due time
         });
 
