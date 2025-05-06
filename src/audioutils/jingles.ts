@@ -96,6 +96,9 @@ import WH_2017_WOOSH_1 from './audio/WH_2017/AUDIOTHEQUE-HET WEER WOOSH 1 (48 kH
 import WH_2017_WOOSH_2 from './audio/WH_2017/AUDIOTHEQUE-HET WEER WOOSH 2 (48 kHz, 16 Bit, -23LUFS).wav';
 import WH_2017_WOOSH_3 from './audio/WH_2017/AUDIOTHEQUE-HET WEER WOOSH 3 (48 kHz, 16 Bit, -23LUFS).wav';
 
+import J_MXM_COUNTER from './audio/JN_MXM/J_2013_counter_loop_customcut.wav';
+import J_MXM_START from './audio/JN_MXM/J_2013_starter_customcut.wav';
+
 export enum JingleType {
     Tapijtje = 'tapijt',
     Effect = 'effect',
@@ -110,6 +113,27 @@ export interface Jingle {
     file: string;
     loops: boolean;
 }
+
+
+const mxmJournaalJingles: Jingle[] = [
+    {
+        name: 'Counter',
+        id: 'jn_mxm_counter',
+        program: 'Journaal_MXM',
+        type: JingleType.Tapijtje,
+        file: J_MXM_COUNTER,
+        loops: true
+    },
+    {
+        name: 'Start',
+        id: 'jn_mxm_start',
+        program: 'Journaal_MXM',
+        type: JingleType.Tapijtje,
+        file: J_MXM_START,
+        loops: false
+    }
+
+];
 
 const terzakejingles: Jingle[] = [
     {
@@ -844,6 +868,7 @@ const jnl13jingles: Jingle[] = [
 ]
 
 export const jinglesByProgram: { [program: string]: Jingle[] } = {
+    'MXM_Journaal': mxmJournaalJingles,
     'Terzake_2024': terzakejingles,
     'De_afspraak_2024': dafjingles,
     'De_zevende_dag_2024': d7djingles,

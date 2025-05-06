@@ -11,6 +11,59 @@ interface JukeBoxAction {
 const d = (dur: number) => new Promise(r => setTimeout(r, dur));
 
 export const actions: { [group: string]: { [action_id: string]: JukeBoxAction } } = {
+    'Journaal 2013 MXM': {
+        // clock -> uitsmijter
+        'jn_mxm_counter': {
+            name: 'Counter',
+            id: 'jn_mxm_counter',
+            exec: () => {
+                playTapijtje('jn_mxm_counter');
+            }
+        },
+        'jn_mxm_start': {
+            name: 'Start',
+            id: 'jn_mxm_start',
+            exec: () => {
+                playTapijtje('jn_mxm_start');
+                stopTapijtje('jn_mxm_counter');
+            }
+        },
+
+        'jn_mxm_hl1': {
+            name: 'Headline 1',
+            id: 'jn_mxm_hl1',
+            exec: () => {
+                playTapijtje('jn_2013_j19_hl1');
+                stopTapijtje('jn_mxm_start');
+            }
+        },
+        'jn_2013_j19_hl234': {
+            name: 'Headline 234',
+            id: 'jn_2013_j19_hl234',
+            exec: () => {
+                stopTapijtje('jn_mxm_start');
+                playTapijtje('jn_2013_j19_hl_234')
+                stopTapijtje('jn_2013_j19_hl1');
+            }
+        },
+        'jn_2013_j19_hl_switch': {
+            name: 'Headline switch',
+            id: 'jn_2013_j19_hl_switch',
+            exec: () => {
+                playEffect('jn_2013_hl_jingle');
+            }
+        },
+        'jn_2013_j19_apotheose': {
+            name: 'Intro',
+            id: 'jn_2013_j19_apotheose',
+            exec: () => {
+                playIdent('jn_2013_hl_apotheose')
+                stopTapijtje('jn_mxm_counter');
+                stopTapijtje('jn_2013_j19_hl1');
+                stopTapijtje('jn_2013_j19_hl_234');
+            }
+        }
+    },
     'Journaal 2013 J13': {
         // goto sport J_OVER_NAAR_SPORT
         // back to news J_IDENT_LOGO
@@ -363,8 +416,142 @@ export const actions: { [group: string]: { [action_id: string]: JukeBoxAction } 
         }
     },
     'De Zevende Dag 2024': {
+        'd7_2024_hl': {
+            name: 'Headlines',
+            id: 'd7_2024_hl',
+            exec: async () => {
+                playTapijtje('d7_2024_headlines');
+            }
+        },
+        'd7_2024_topic': {
+            name: 'Topic Separator',
+            id: 'd7_2024_topic',
+            exec: async () => {
+                playEffect('d7_2024_topic_separator');
+            }
+        },
+        'd7_2024_intro': {
+            name: 'Begingeneriek',
+            id: 'd7_2024_intro',
+            exec: async () => {
+                fadeOutTapijtje('d7_2024_headlines', 300);
+                playIdent('d7_2024_begingeneriek');
+            }
+        },
+        'd7_2024_bumper_menu': {
+            name: 'Bumper Menu',
+            id: 'd7_2024_bumper_menu',
+            exec: async () => {
+                playEffect('d7_2024_bumper_menu');
+            }
+        },
+        'd7_2024_bumper_music': {
+            name: 'Bumper Muziek',
+            id: 'd7_2024_bumper_music',
+            exec: async () => {
+                playEffect('d7_2024_bumper_muziek');
+            }
+        },
+        'd7_2024_bumper_studio': {
+            name: 'Bumper Studio',
+            id: 'd7_2024_bumper_studio',
+            exec: async () => {
+                playEffect('d7_2024_bumper_studio');
+            }
+        },
+        'd7_2024_bumper_titel': {
+            name: 'Bumper Titel',
+            id: 'd7_2024_bumper_titel',
+            exec: async () => {
+                playEffect('d7_2024_bumper_titel');
+            }
+        },
+        'd7_2024_accent_1': {
+            name: 'Accent 1',
+            id: 'd7_2024_accent_1',
+            exec: async () => {
+                playEffect('d7_2024_accent_1');
+            }
+        },
+        'd7_2024_accent_2': {
+            name: 'Accent 2',
+            id: 'd7_2024_accent_2',
+            exec: async () => {
+                playEffect('d7_2024_accent_2');
+            }
+        },
+        'd7_2024_bedanking': {
+            name: 'Bedanking',
+            id: 'd7_2024_bedanking',
+            exec: async () => {
+                playTapijtje('d7_2024_bedanking');
+            }
+        },
+        'd7_2024_outro': {
+            name: 'Eindgeneriek',
+            id: 'd7_2024_outro',
+            exec: async () => {
+                playIdent('d7_2024_eindgeneriek');
+                fadeOutTapijtje('d7_2024_bedanking', 300);
+            }
+        },
+
+
+        // const d7djingles: Jingle[] = [
+
+
+        //     {
+        //         name: 'Headlines Lite',
+        //         id: 'd7_2024_headlines_lite',
+        //         program: 'De_zevende_dag_2024',
+        //         type: JingleType.Tapijtje,
+        //         file: D7_2024_HEADLINES_LITE,
+        //         loops: false
+        //     },
+        //     {
+        //         name: 'Headlines Lite 2',
+        //         id: 'd7_2024_headlines_lite_2',
+        //         program: 'De_zevende_dag_2024',
+        //         type: JingleType.Tapijtje,
+        //         file: D7_2024_HEADLINES_LITE_2,
+        //         loops: false
+        //     },
+        //     {
+        //         name: 'Headlines Lite 3',
+        //         id: 'd7_2024_headlines_lite_3',
+        //         program: 'De_zevende_dag_2024',
+        //         type: JingleType.Tapijtje,
+        //         file: D7_2024_HEADLINES_LITE_3,
+        //         loops: false
+        //     },
+        //     {
+        //         name: 'Straksfie',
+        //         id: 'd7_2024_straksfie',
+        //         program: 'De_zevende_dag_2024',
+        //         type: JingleType.Tapijtje,
+        //         file: D7_2024_STRAKSFIE,
+        //         loops: false
+        //     },
+
+        // ]
 
     }
 
 };
 
+const actionLookup: { [id: string]: JukeBoxAction } = {};
+
+Object.values(actions).forEach(group => {
+    Object.values(group).forEach(action => {
+        actionLookup[action.id] = action;
+    });
+});
+
+export const run_action_by_id = (action_id: string) => {
+    const action = actionLookup[action_id];
+    if (action) {
+        action.exec();
+    } else {
+        console.error(`Action ${action_id} not found`);
+    }
+}
