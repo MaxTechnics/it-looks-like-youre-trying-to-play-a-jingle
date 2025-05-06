@@ -9,7 +9,7 @@
                 <LoadingView @load="hasLoaded = true" />
             </div>
             <div class="status-bar status" style="align-self: flex-end;">
-                <p class="status-bar-field">System ready</p>
+                <p class="status-bar-field">System starting</p>
                 <p class="status-bar-field">TBAow</p>
                 <p class="status-bar-field">{{ time }}</p>
             </div>
@@ -133,7 +133,9 @@
             </div>
             <div class="status-bar status" style="align-self: flex-end;">
                 <p class="status-bar-field">System ready</p>
-                <p class="status-bar-field">Websocket delay: N/A</p>
+                <p class="status-bar-field">
+                    <RealtimeLatency :supa_client="supabase" />
+                </p>
                 <p class="status-bar-field">Last message: {{ latest_msg }}</p>
                 <p class="status-bar-field">{{ time }}</p>
             </div>
