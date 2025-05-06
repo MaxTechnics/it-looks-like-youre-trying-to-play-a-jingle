@@ -32,7 +32,7 @@
             <span class="progress-indicator-bar" :style="`width: ${loadingPercentage}%;`" />
         </div>
 
-        <div class="modal" v-if="!false">
+        <div class="modal" v-if="false">
             <div class="window">
                 <div class="title-bar">
                     <div class="title-bar-text">Partial load</div>
