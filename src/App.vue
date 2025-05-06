@@ -156,6 +156,7 @@ import Error from './Views/Error.vue';
 import StartBtn from './components/StartBtn.vue'
 import clippymap from './clippy/agents/Clippy/map.png';
 import { createClient } from '@supabase/supabase-js';
+import RealtimeLatency from './components/RealtimeLatency.vue';
 import funkytown from './images/funkytown.mp4'
 
 const hasLoaded = ref(false);
