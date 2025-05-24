@@ -17,7 +17,7 @@
 
         <div class="cont" v-else>
             <div class="title-bar" style="-webkit-app-region: drag;">
-                <div class="title-bar-text">The fucking app</div>
+                <div class="title-bar-text">It looks like you're trying to play a jingle</div>
             </div>
             <div class="window-body windowcontent">
                 <h1><i>The jukebox</i></h1>
