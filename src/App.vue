@@ -6,7 +6,7 @@
                 <div class="title-bar-text">The fucking app loads</div>
             </div>
             <div class="window-body windowcontent">
-                <LoadingView @load="hasLoaded = true" />
+                <LoadingView @load="hasLoaded = true; dothing()" />
             </div>
             <div class="status-bar status" style="align-self: flex-end;">
                 <p class="status-bar-field">System starting</p>
@@ -252,6 +252,13 @@ const time = ref('HUUH???');
 
 const clip = ref<Agent | undefined>();
 
+const dothing = () => {
+    clip?.value.moveTo(window.innerWidth - 150, 120, 0)
+    clip?.value.play('Greeting')
+    clip?.value.speak("It looks like you're debugging this shit. Would you like help?", false);
+    clip?.value.play('Congratulate', 10000);
+}
+
 onMounted(() => {
     setInterval(updateClock, 100);
 
@@ -263,9 +270,9 @@ onMounted(() => {
             agent.moveTo(40, 40, 0)
             console.log(agent.animations())
             // agent.show(false);
-            agent.play('Greeting')
-            agent.speak("It looks like you're debugging this shit. Would you like help?", false);
-            agent.play('Congratulate', 10000);
+            // agent.play('Greeting')
+            // agent.speak("It looks like you're debugging this shit. Would you like help?", false);
+            // agent.play('Congratulate', 10000);
             // agent.animate();
         },
         failCb: (e) => {
