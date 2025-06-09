@@ -21,7 +21,7 @@
             </div>
             <div class="window-body windowcontent">
                 <h1><i>The jukebox</i></h1>
-                <p>This shit is like so ass<br />Elk zunnen dah<br />ik ben herrit callewaert uit bavikhove deelhemeente van oarelbeke.</p>
+                <p>Hello<br />Elk zunnen dah<br />ik ben herrit callewaert uit bavikhove deelhemeente van oarelbeke.</p>
                 <video :src="funkytown" autoplay loop muted style="position: absolute; top: 30px; right: calc(5px + 32px); height: 75px;"></video>
                 <div>
                     <menu role="tablist">
