@@ -55,7 +55,7 @@ import JN_2013_WEER_TAPIJT from './audio/JN_2013/J_WEER_TAPIJT.wav';
 import JN_2013_J19_BEGIN from './audio/JN_2013/J19_BEGIN.wav';
 import JN_2013_J19_HL_234_APOTHEOSE_OK from './audio/JN_2013/J19_HL_234_APOTHEOSE_OK.wav';
 import JN_2013_J19_HL_234_APOTHEOSE_OKOK from './audio/JN_2013/J19_HL_234_APOTHEOSE_OKOK.wav';
-import JN_2013_J19_HL_234 from './audio/JN_2013/J19_HL_234.wav';
+import JN_2013_J19_HL_234 from './audio/JN_MXM/J_2013_J_19_hl234_customcut_extended.wav';
 import JN_2013_J19_HL_APOTHEOSE from './audio/JN_2013/J19_HL_APOTHEOSE.wav';
 import JN_2013_J19_HL1 from './audio/JN_2013/J19_HL1.wav';
 import JN_2013_J19_HL234_APOTHEOSE from './audio/JN_2013/J19_HL234_APOTHEOSE.wav';
@@ -97,7 +97,7 @@ import WH_2017_WOOSH_2 from './audio/WH_2017/AUDIOTHEQUE-HET WEER WOOSH 2 (48 kH
 import WH_2017_WOOSH_3 from './audio/WH_2017/AUDIOTHEQUE-HET WEER WOOSH 3 (48 kHz, 16 Bit, -23LUFS).wav';
 
 import J_MXM_COUNTER from './audio/JN_MXM/J_2013_counter_loop_customcut.wav';
-import J_MXM_START from './audio/JN_MXM/J_2013_starter_customcut.wav';
+import J_MXM_START from './audio/JN_MXM/J_2013_starter_customcut_extended.wav';
 
 export enum JingleType {
     Tapijtje = 'tapijt',
